@@ -1,0 +1,16 @@
+<%= form_with(model: [ @disasterevent, @disasterevent.resourceitems.build ], local: true) do |form| %>
+  <div class="col-container">    
+    <div class="col2"></div>
+      <div class="col" style="background-color:#66a3ff; padding:10px;">
+        <%= form.label :resource_name %> <%= form.text_field :resourcename %><br>
+	<%= form.label :quantity_needed %> <%= form.number_field :quantity %><br>
+        <p style="display:none"><%= form.label :city_where_it_is_needed %> <%= form.text_field :city, value: current_user.city %></p>
+	<%= form.label :description %> <%= form.text_area :resourcedescription %><br>
+	<p style="display:none"><%= form.label :time_made %> <%= form.text_field :askedfor, value: DateTime.now.strftime("%m/%d/%Y") %></p>
+	<p style="display:none"><%= form.label :made_by %> <%= form.text_field :madeby, value: current_user.username %></p>
+	<p style="display:none"><%= form.label :current_status_of_request %> <%= form.text_field :currstatus, value:"New" %></p>
+	<%= form.submit %>
+      </div>
+    <div class="col2"></div>
+  </div>
+<% end %>

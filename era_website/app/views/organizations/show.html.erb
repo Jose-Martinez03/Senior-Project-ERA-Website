@@ -1,0 +1,12 @@
+<p>
+  <strong>Government Organization Name</strong>
+  <%= @organization.orgname %>
+</p>
+ 
+<p>
+  <strong>Organization code</strong>
+  <%= @organization.orgcode %>
+</p>
+
+<%= link_to 'Edit', edit_organization_path(@organization) %><br>
+<%= link_to 'Back', organizations_path %>

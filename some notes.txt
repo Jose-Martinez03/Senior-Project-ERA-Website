@@ -1,0 +1,147 @@
+left off on section 5.2 10/17/2018
+left off on section 5.11 11/23/2018
+left off on section 5.13 11/26/2018
+left off on section 7.00 11/26/2018  
+Tutorial completed 11/30/2018
+
+Beginning redoing the instructions with alterations 11/30/2018
+left off section 5.2 11/30/2018
+left off on section 5.2 12/1/2018
+left off on section 5.12 12/3/2018
+left off on section 7.0 12/4/2018
+left off on section 5.9 12/4/2018
+left off on section 5.10 12/5/2018 govtuser.rb
+left off on chapter 8 listing 8.7
+left off just before chapter 8 listing 8.20 12/10/2018
+See listing 6.39 in chapter 6 for password stuff
+finished making govt organizations database
+left off on section 6 in getting started page and finished chapter 8 in book 12/10/2018
+Startup Instructions:
+1. Open command Prompt window
+2. cd Downloads
+3. cd era_website
+4. To start the server where the page can be showed: ruby bin\rails server
+5. To view the page go to: http://localhost:3000
+
+
+_______________________________________________________________________
+| To add a column to a database:                                        |
+| rails generate migration AddListIdColumnToIdeas list_id:integer       |
+| then run:                                                             |
+| rake db:migrate                                                       | 
+|_______________________________________________________________________|
+
+_______________________________________________________________________
+| To remove a column from a database:                                   |
+| rails generate migration RemoveCountryFromSampleApps country:string   |
+| then run:                                                             |
+| rake db:migrate                                                       | 
+|_______________________________________________________________________|
+
+
+
+Code snippet to adapt for login
+      #      <%=
+      #      link_to_unless(@current_user.nil?, "Reply", { action: "reply" }) do |name|
+      #        link_to(name, { controller: "accounts", action: "signup" })
+      #      end
+      #   %>
+      #   # If the user is logged in...
+      #   # => <a href="/controller/reply/">Reply</a>
+      #   # If not...
+      #   # => <a href="/accounts/signup">Reply</a>
+
+      def link_to_unless(condition, name, options = {}, html_options = {}, &block)
+        link_to_if !condition, name, options, html_options, &block
+      end
+
+
+
+      # Creates a link tag of the given +name+ using a URL created by the set of
+      # +options+ if +condition+ is true, otherwise only the name is
+      # returned. To specialize the default behavior, you can pass a block that
+      # accepts the name or the full argument list for +link_to_unless+ (see the examples
+      # in +link_to_unless+).
+      #
+      # ==== Examples
+      #   <%= link_to_if(@current_user.nil?, "Login", { controller: "sessions", action: "new" }) %>
+      #   # If the user isn't logged in...
+      #   # => <a href="/sessions/new/">Login</a>
+      #
+      #   <%=
+      #      link_to_if(@current_user.nil?, "Login", { controller: "sessions", action: "new" }) do
+      #        link_to(@current_user.login, { controller: "accounts", action: "show", id: @current_user })
+      #      end
+      #   %>
+      #   # If the user isn't logged in...
+      #   # => <a href="/sessions/new/">Login</a>
+      #   # If they are logged in...
+      #   # => <a href="/accounts/show/3">my_username</a>
+      def link_to_if(condition, name, options = {}, html_options = {}, &block)
+        if condition
+          link_to(name, options, html_options)
+        else
+          if block_given?
+            block.arity <= 1 ? capture(name, &block) : capture(name, options, html_options, &block)
+          else
+            ERB::Util.html_escape(name)
+          end
+        end
+      end
+
+
+
+
+Here are some string comparison methods:
+"Ali".eql? "Ali"
+=> true
+The spaceship (<=>) method can be used to compare two strings in relation to their alphabetical ranking. The <=> method returns 0 if the strings are identical, -1 if the left hand string is less than the right hand string, and 1 if it is greater:
+"Apples" <=> "Apples"
+=> 0
+
+"Apples" <=> "Pears"
+=> -1
+
+"Pears" <=> "Apples"
+=> 1
+A case insensitive comparison may be performed using the casecmp method which returns the same values as the <=> method described above:
+"Apples".casecmp "apples"
+=> 0
+
+
+For civil user
+when the home page will have a link called: "Report Need"
+the report need will take them to a disaster index where instead of 
+displaying all the disasters it shows the disasters that are in the 
+same state as the user they are filtered by the state field
+
+will add a made by field to the resourceitem database that will store the
+civil users username by default but not show it.
+
+when civil user selects the disaster they need from the index the resource items table
+will filter all the resources, only showing those that have the correct username in the
+made by field
+
+
+
+
+for the status field in the resourceitems make it a textbox and when the govt user wants
+to "update request status" they can choose an appropriate response from a drop down list, responses can include
+set the default value to new request 
+- help delayed
+- help deployed
+- need fullfilled
+
+
+
+
+
+
+
+
+
+
+
+
+
+

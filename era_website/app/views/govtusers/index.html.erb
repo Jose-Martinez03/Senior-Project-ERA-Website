@@ -1,0 +1,66 @@
+<head>
+<style>
+table, th, td {
+    border: 2px solid black;
+    padding: 8px;
+}
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+<h1 style="text-align:center"> All Users: Admin Use Only </h1>
+<h4>
+<p style="padding-left: 20px;">
+<%= link_to 'Back to profile', govtuser_path(current_user) %><br>
+</p>
+
+<table align="center" style="width:95%">
+  <caption>Government Users</caption>
+  <tr>
+    <th style="width:15%">Username</th>
+    <th style="width:20%">Name</th>
+    <th style="width:20%">Organization</th>
+    <th style="width:25%" colspan="3"></th> 
+  </tr>
+ 
+  <% @govtusers.where(usertype: 'govt').each do |user| %>
+    <tr>
+      <td><%= user.username %></td>
+      <td><%= user.first_name %> <%= user.last_name %></td>
+      <td><%= user.orgname %></td>    
+  <!--    <td style="text-align: center"><%= link_to 'Show', govtuser_path(user) %></td>
+      <td style="text-align: center"><%= link_to 'Profile', govtuser_path(user) %></td>  -->
+      <td style="text-align: center"><%= link_to 'Delete', govtuser_path(user),
+				method: :delete,
+				data: { confirm: 'Are you sure?'} %></td>
+    </tr>
+  <% end %>
+</table>
+<br><br>
+<table align="center" style="width:95%">
+  <caption>Civilian Users</caption>
+  <tr>
+    <th style="width:15%">Username</th>
+    <th style="width:20%">Name</th>
+    <th style="width:20%">City</th>
+    <th style="width:20%">State</th>
+    <th style="width:25%" colspan="2"></th> 
+  </tr>
+ 
+  <% @govtusers.where(usertype: 'civil').each do |user| %>
+    <tr>
+      <td><%= user.username %></td>
+      <td><%= user.first_name %> <%= user.last_name %></td>
+      <td><%= user.city %></td>
+      <td><%= user.state %></td>
+      <td style="text-align: center"><%= link_to 'Show', govtuser_path(user) %></td>
+      <td style="text-align: center"><%= link_to 'Delete', govtuser_path(user),
+				method: :delete,
+				data: { confirm: 'Are you sure?'} %></td>
+    </tr>
+  <% end %>
+</table>
+</body>
+</h4>

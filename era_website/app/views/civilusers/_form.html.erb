@@ -1,0 +1,158 @@
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+/* Style the header */
+header {
+    background-color: #0000cc;
+    padding: 30px;
+    text-align: center;
+    font-size: 35px;
+    color: white;
+}
+p.ex1 {padding-left: 20px;} li.ex2 {padding-left: 20px;}
+/* Style the footer */
+footer {
+    background-color:#66a3ff;
+    padding: 10px;
+    text-align: center;
+
+}
+
+.col-container {
+    display: table;
+    width: 100%;
+}
+.col {
+    display: table-cell;
+	width:40%;
+    padding: 16px;
+}
+
+.col1 {
+    display: table-cell;
+    width: 10%;
+    padding: 16px;
+}
+
+@media only screen and (max-width: 1000px) {
+    .col { 
+        display: block;
+        width: 100%;
+    }
+    .col1 { 
+        display: block;
+        width: 100%;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<header>
+User Sign Up<hr>
+</header>
+<p style="text-align:center; font-size:20px; padding-top:10px;"><%= link_to 'Return to Welcome Page', controller: 'welcome' %></p>
+<%= form_with model: @civiluser, local: true do |form| %>
+   <% if @civiluser.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@civiluser.errors.count, "error") %> prohibited
+        this user from being saved:
+      </h2>
+      <ul>
+        <% @civiluser.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="col-container">
+
+    <div class="col1"></div>
+    <div class="col" style="background: #ccc; font-size:20px; padding-left:20px;">
+
+  <p class="ex1">
+    <%= form.label :First_name %><br>
+    <%= form.text_field :first_name %>
+  </p>
+ 
+  <p class="ex1">
+    <%= form.label :Last_name %><br>
+    <%= form.text_field :last_name %>
+  </p>
+
+  <p class="ex1">
+    <%= form.label :street_address %><br>
+    <%= form.text_field :address %>
+  </p>
+
+  <p class="ex1">
+    <%= form.label :city %><br>
+    <%= form.text_field :city %>
+  </p>	
+
+  <p class="ex1">
+    <%= form.label :State %><br>
+    <%= form.select(:state, [['Alabama','Alabama'],['Alaska', 'Alaska'],['Arizona','Arizona'],['Arkansas','Arkansas'],['California','California'],['Colorado', 'Colorado'],['Connecticut','Connecticut'],['Delaware','Delaware'],['Florida','Florida'],['Georgia','Georgia'],['Hawaii','Hawaii'],['Idaho','Idaho'],['Illinois','Illinois'],['Indiana','Indiana'],['Iowa','Iowa'],['Kansas','Kansas'],['Kentucky','Kentucky'],['Louisiana','Louisiana'],['Maine','Maine'],['Maryland','Maryland'],['Massachusetts','Massachusetts'],['Michigan','Michigan'],['Minnesota','Minnesota'],['Mississippi','Mississippi'],['Missouri','Missouri'],['Montana','Montana'],['Nebraska','Nebraska'],['Nevada','Nevada'],['New Hampshire','New Hampshire'],['New Jersey','New Jersey'],['New Mexico','New Mexico'],['New York','New York'],['North Carolina','North Carolina'],['North Dakota','North Dakota'],['Ohio','Ohio'],['Oklahoma','Oklahoma'],['Oregon','Oregon'],['Pennsylvania','Pennsylvania'],['Rhode Island','Rhode Island'],['South Carolina','South Carolina'],['South Dakota','South Dakota'],['Tennessee','Tennessee'],['Texas','Texas'],['Utah','Utah'],['Vermont','Vermont'],['Virginia','Virginia'],['Washington','Washington'],['West Virginia','West Virginia'],['Wisconsin','Wisconsin'],['Wyoming','Wyoming']]) %>
+  </p>
+
+    </div>
+    <div class="col" style="background: #f1f1f1; font-size:20px; padding-left:20px;">
+ 
+	  <p class="ex1">
+	    <%= form.label :Username %><br>
+	    <%= form.text_field :username %>
+	  </p>
+	
+	  <p class="ex1">
+	    <%= form.label :Confirm_Username %><br>
+	    <%= form.text_field :username_confirmation %>
+	  </p>
+
+	  <p class="ex1">
+	    <%= form.label :Password %><br>
+	    <%= form.password_field :password %>
+	  </p>
+	  
+	  <p class="ex1">
+	    <%= form.label :Confirm_Password %><br>
+	    <%= form.password_field :password_confirmation %>
+	  </p>
+
+	  <p class="ex1">
+	    <%= form.label :email %><br>
+	    <%= form.email_field :email, placeholder:"example@website.com" %>
+	  </p>
+	
+	  <p class="ex1">
+	    <%= form.label :Phone_number %><br>
+	    <%= form.telephone_field :phone_number, placeholder:"Ex: 956456789" %>
+	  </p>
+	
+	  <p class="ex1">
+	    <%= form.label :Phone_number %><br>
+	    <%= form.telephone_field :phone_number_confirmation, placeholder:"Ex: 956456789" %>
+	  </p>
+  	  <p class="ex1">
+  	    <%= form.submit 'Save'%>
+  	  </p>
+    </div>
+    <div class="col1"></div>
+
+<% end %>
+</div>
+<footer> 
+</footer>
+</body>
+</html>
+
+

@@ -1,0 +1,49 @@
+<%= form_with model: @disasterevent, local: true do |form| %>
+  <% if @disasterevent.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@disasterevent.errors.count, "error") %> prohibited
+        this disaster page from being saved:
+      </h2>
+      <ul>
+        <% @disasterevent.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= form.label :Disaster_Name %><br>
+    <%= form.text_field :name %>
+  </p>
+ 
+  <p>
+    <%= form.label :Begin_Date %><br>
+    <%= form.date_field :begindate %>
+  </p>
+
+  <p>
+    <%= form.label :Disaster_Type %><br>
+    <%= form.select(:disaster_type, [['Hurricane', 'Hurricane'],['Tornado', 'Tornado'],['Earthquake', 'Earthquake'],['Tsunami', 'Tsunami'], ['Drought', 'Drought'], ['Fires', 'Fires']] ) %>
+  </p>
+	
+  <p>
+    <%= form.label :State %><br>
+    <%= form.select(:state, [['Alabama','Alabama'],['Alaska', 'Alaska'],['Arizona','Arizona'],['Arkansas','Arkansas'],['California','California'],['Colorado', 'Colorado'],['Connecticut','Connecticut'],['Delaware','Delaware'],['Florida','Florida'],['Georgia','Georgia'],['Hawaii','Hawaii'],['Idaho','Idaho'],['Illinois','Illinois'],['Indiana','Indiana'],['Iowa','Iowa'],['Kansas','Kansas'],['Kentucky','Kentucky'],['Louisiana','Louisiana'],['Maine','Maine'],['Maryland','Maryland'],['Massachusetts','Massachusetts'],['Michigan','Michigan'],['Minnesota','Minnesota'],['Mississippi','Mississippi'],['Missouri','Missouri'],['Montana','Montana'],['Nebraska','Nebraska'],['Nevada','Nevada'],['New Hampshire','New Hampshire'],['New Jersey','New Jersey'],['New Mexico','New Mexico'],['New York','New York'],['North Carolina','North Carolina'],['North Dakota','North Dakota'],['Ohio','Ohio'],['Oklahoma','Oklahoma'],['Oregon','Oregon'],['Pennsylvania','Pennsylvania'],['Rhode Island','Rhode Island'],['South Carolina','South Carolina'],['South Dakota','South Dakota'],['Tennessee','Tennessee'],['Texas','Texas'],['Utah','Utah'],['Vermont','Vermont'],['Virginia','Virginia'],['Washington','Washington'],['West Virginia','West Virginia'],['Wisconsin','Wisconsin'],['Wyoming','Wyoming']]) %>
+  </p>
+
+  <p>
+    <%= form.label :Description %><br>
+    <%= form.text_area :description %>
+  </p>
+ 
+  <p style="display:none">
+    <%= form.label :madeby %><br>
+    <%= form.text_field :madeby, value: current_user.username %>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

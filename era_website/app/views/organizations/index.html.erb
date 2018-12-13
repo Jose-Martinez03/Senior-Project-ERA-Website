@@ -1,0 +1,38 @@
+<html>
+<head>
+<style>
+table, th, td {
+    border: 1px solid black;
+	
+	
+}
+</style>
+</head>
+
+
+<body>
+<h1>All Government Organizations</h1>
+<%= link_to 'Back to profile', govtuser_path(current_user) %><br>
+<%= link_to 'New Organization', new_organization_path %>
+<table style ="width:70%">
+  <tr>
+    <th>Name</th>
+    <th>Access Code</th>
+    <th colspan="3"></th>
+  </tr>
+ 
+  <% @organizations.each do |organization| %>
+    <tr>
+      <td><%= organization.orgname %></td>
+      <td><%= organization.orgcode %></td>
+      <td><%= link_to 'Show', organization_path(organization) %></td>
+      <td><%= link_to 'Edit', edit_organization_path(organization) %></td>
+      <td><%= link_to 'Destroy', organization_path(organization),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+<body>
+
+</html>

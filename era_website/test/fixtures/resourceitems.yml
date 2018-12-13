@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  resourcename: MyString
+  resourcedescription: MyText
+  quantity: 1
+  city: MyString
+  disasterevent: one
+
+two:
+  resourcename: MyString
+  resourcedescription: MyText
+  quantity: 1
+  city: MyString
+  disasterevent: two

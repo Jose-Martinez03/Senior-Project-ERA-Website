@@ -1,0 +1,2 @@
+module ResourceitemsHelper
+end

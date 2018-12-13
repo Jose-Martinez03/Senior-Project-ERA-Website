@@ -1,0 +1,11 @@
+  <tr style="background-color: white;">
+    <td style=" border: 2px solid black; padding: 8px;"><%= resourceitem.resourcename %></td>
+    <td style=" border: 2px solid black; padding: 8px;"><%= resourceitem.city %></td>
+    <td style=" border: 2px solid black; padding: 8px;"><%= resourceitem.quantity %></td>  
+    <td style=" border: 2px solid black; padding: 8px;"><%= resourceitem.resourcedescription %></td>
+    <td style=" border: 2px solid black; padding: 8px;"><%= resourceitem.askedfor %></td>
+    <td style=" border: 2px solid black; padding: 8px;"><%= resourceitem.currstatus %></td>
+    <td style=" border: 2px solid black; padding: 8px;"><%= link_to 'Delete Resource', [resourceitem.disasterevent, resourceitem],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %></td>
+  </tr>

@@ -1,0 +1,127 @@
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+    background-color: #0000cc;
+    padding: 30px;
+    text-align: center;
+    font-size: 35px;
+    color: white;
+}
+
+/* Clear floats after the columns */
+section:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Style the footer */
+footer {
+    background-color:#66a3ff;
+    padding: 10px;
+    text-align: center;
+}
+
+.col-container {
+    display: table;
+    width: 100%;
+}
+.col {
+    display: table-cell;
+    font-size:18px;
+    width: 30%;
+    padding: 16px;
+}
+.col1 {
+    display: table-cell;
+    width: 50%;
+    padding: 16px;
+}
+.col2 {
+    display: table-cell;
+    width: 10%;
+    padding: 16px;
+}
+@media only screen and (max-width: 1000px) {
+    .col { 
+        display: block;
+        width: 100%;
+    }
+    .col1 { 
+        display: block;
+        width: 100%;
+    }
+    .col2 { 
+        display: block;
+        width: 100%;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<header>
+	<h1><%= @disasterevent.name %></h1>
+</header>
+
+<div class="col-container">    
+<div class="col2"></div>
+    <div class="col" style="background: #ccc; padding:10px;">
+      <ul>
+       <li>Date: <%= @disasterevent.begindate %></li><br>
+       <li>Disaster Type: <%= @disasterevent.disaster_type %></li><br>
+       <li>Location: <%= @disasterevent.state %></li><hr>
+	<li>Created By: <%= @disasterevent.madeby %></li><hr>
+       <% if current_user.usertype .eql? 'govt'%>
+        	<li><%= link_to 'Edit Disaster Page', edit_disasterevent_path(@disasterevent) %></li><br>
+       <% end %>
+	<% if current_user.username .eql? 'Admin'%>
+        	<li><%= link_to 'Edit Disaster Page', edit_disasterevent_path(@disasterevent) %></li><br>
+       <% end %>
+       <li><%= link_to 'Back to Disaster Index', disasterevents_path %></li>
+      </ul>      
+    </div>
+
+    <div class="col1" style="background: #f1f1f1; font-size:20px; padding:10px;">
+      <h2>Description:</h2>
+	<h4><p>
+	<%= @disasterevent.description %>
+	</p><h4>
+    </div>
+<div class="col2"></div>
+</div>
+<footer>
+<% if current_user.usertype .eql? 'civil' %>
+  <h3><p>Add a Resource</p></h3>
+  <%= render 'resourceitems/form' %>
+<% end %>
+  <h4><p>Resources</p></h4>
+<table align="center" style="width:95%; border: 2px solid black; padding: 8px;">
+  <tr style="background-color: white;">
+    <th style="width:25%; border: 2px solid black; padding: 8px;"><strong>Resource:</strong></th>
+    <th style="width:20%; border: 2px solid black; padding: 8px;"><strong>Location Required:</strong></th>    
+    <th style="width:10%; border: 2px solid black; padding: 8px;"><strong>Quantity:</strong></th>
+    <th style="width:20%; border: 2px solid black; padding: 8px;"><strong>description:</strong></th>
+    <th style="width:10%; border: 2px solid black; padding: 8px;"><strong>Date Requested:</strong></th>
+    <th style="width:10%; border: 2px solid black; padding: 8px;"><strong>Request Status:</strong></th>
+    <th style="width:10%; border: 2px solid black; padding: 8px;"></th>
+  </tr>
+  <%= render @disasterevent.resourceitems %> 
+</table> 
+
+</footer>
+</body>
+</html>
