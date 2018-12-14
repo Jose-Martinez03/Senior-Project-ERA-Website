@@ -15,7 +15,7 @@ def create
   
   private
     def resourceitem_params
-      params.require(:resourceitem).permit(:resourcename, :resourcedescription, :quantity, :city, :madeby)
+      params.require(:resourceitem).permit(:resourcename, :resourcedescription, :quantity, :city, :madeby, :askedfor, :currstatus)
     end
 end
 
